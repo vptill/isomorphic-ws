@@ -6,6 +6,9 @@ if (typeof WebSocket !== 'undefined') {
   ws = WebSocket
 } else if (typeof MozWebSocket !== 'undefined') {
   ws = MozWebSocket
+} else if (typeof WebSocketPair !== 'undefined') {
+  let [client, server] = Object.values(new WebSocketPair());
+  ws = client
 } else if (typeof global !== 'undefined') {
   ws = global.WebSocket || global.MozWebSocket
 } else if (typeof window !== 'undefined') {
